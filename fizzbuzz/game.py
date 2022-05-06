@@ -1,4 +1,3 @@
-import prompt
 from fizzbuzz.greeting import greeting
 
 RULES = {  # noqa: WPS407
@@ -21,11 +20,11 @@ def get_answer(num):
 
 
 def game(input, output):
-    print(greeting())
+    output(greeting())
     while True:  # noqa: WPS457
-        number = prompt.integer('Number: ')
+        number = input('Number: ')
         answer = get_answer(number)
         if answer:
-            print('{0}!'.format(answer))
+            output('{0}!'.format(answer))
         else:
-            print('Maybe try another one!')
+            output('Maybe try another one!')
