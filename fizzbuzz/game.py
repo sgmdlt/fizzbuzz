@@ -1,5 +1,12 @@
 from itertools import count
+
 from fizzbuzz.greeting import greeting
+
+MESSAGES = {  # noqa: WPS407
+    'prompt': 'Number: ',
+    'correct_answer': '{answer}!'.format,
+    'incorrect_answer': 'Maybe try another one!',
+}
 
 RULES = {  # noqa: WPS407
     3: 'Fizz',
@@ -19,12 +26,6 @@ def get_answer(num):
             num //= divider
     return answer
 
-
-MESSAGES = {
-    'prompt': 'Number: ',
-    'correct_answer': '{answer}!'.format,
-    'incorrect_answer': 'Maybe try another one!',
-}
 
 def game(from_input, to_output, end):
     to_output(greeting())
