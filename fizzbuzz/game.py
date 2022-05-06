@@ -1,4 +1,4 @@
-import prompt
+from itertools import count
 from fizzbuzz.greeting import greeting
 
 RULES = {  # noqa: WPS407
@@ -20,12 +20,21 @@ def get_answer(num):
     return answer
 
 
-def game(input, output):
-    print(greeting())
-    while True:  # noqa: WPS457
-        number = prompt.integer('Number: ')
+MESSAGES = {
+    'prompt': 'Number: ',
+    'correct_answer': '{answer}!'.format,
+    'incorrect_answer': 'Maybe try another one!',
+}
+
+def game(from_input, to_output, end):
+    to_output(greeting())
+
+    for turn in count(1):
+        number = from_input(MESSAGES['prompt'])
         answer = get_answer(number)
         if answer:
-            print('{0}!'.format(answer))
+            to_output(MESSAGES['correct_answer'](answer=answer))
         else:
-            print('Maybe try another one!')
+            to_output(MESSAGES['incorrect_answer'])
+        if end and turn == end:
+            break
