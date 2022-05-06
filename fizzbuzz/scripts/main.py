@@ -1,13 +1,12 @@
 #!env/bin/python
 import sys
 
-import prompt
 from fizzbuzz.game import game
 
 
 def main():
     try:
-        game(input=prompt.integer, output=print)
+        game()
     except KeyboardInterrupt:
         print('\nBue!')
         sys.exit(0)
